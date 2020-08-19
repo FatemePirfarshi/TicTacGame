@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tic_root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".controller.TicTacToeFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="249dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tic_btn_2_0"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_2_1"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_2_2"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tic_btn_1_0"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_1_1"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_1_2"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tic_btn_0_0"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_0_1"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/tic_btn_0_2"
+                android:layout_width="wrap_content"
+                android:layout_height="75dp"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:gravity="center"
+        android:text="@string/game_name_tic_tac_toe"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+</FrameLayout>

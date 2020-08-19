@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TicTacGame</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="game_name_row">Game: 4 in a Row</string>
+    <string name="game_name_tic_tac_toe">Game: Tic Tac Toe</string>
+    <string name="button_tic_tac_toe">Tic Tac Toe</string>
+    <string name="button_4_in_a_row">4 in a Row</string>
+</resources>
