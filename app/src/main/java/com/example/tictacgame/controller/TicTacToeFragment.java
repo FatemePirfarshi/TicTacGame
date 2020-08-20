@@ -135,7 +135,7 @@ public class TicTacToeFragment extends Fragment {
         boolean column3 = winState(mButtonTic02, mButtonTic12, mButtonTic22);
         boolean diagonal1 = winState(mButtonTic20, mButtonTic11, mButtonTic02);
         boolean diagonal2 = winState(mButtonTic00, mButtonTic11, mButtonTic22);
-        
+
         return (line1 || line2 || line3 ||
                 column1 || column2 || column3 ||
                 diagonal1 || diagonal2);

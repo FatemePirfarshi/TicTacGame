@@ -30,31 +30,40 @@
                 android:id="@+id/row_btn_4_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_4_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_4_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_4_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_4_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -66,31 +75,40 @@
                 android:id="@+id/row_btn_3_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_3_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_3_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_3_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_3_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -103,31 +121,40 @@
                 android:id="@+id/row_btn_2_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_2_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_2_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark"/>
 
             <Button
                 android:id="@+id/row_btn_2_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_2_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark"/>
         </LinearLayout>
 
         <LinearLayout
@@ -139,31 +166,40 @@
                 android:id="@+id/row_btn_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_1_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_1_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_1_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark"/>
 
         </LinearLayout>
 
@@ -176,32 +212,43 @@
                 android:id="@+id/row_btn_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_0_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_0_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_0_4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/secondary_text_dark" />
+
         </LinearLayout>
+
     </LinearLayout>
 
 </FrameLayout>
