@@ -40,6 +40,35 @@ public class FourInARowFragment extends Fragment {
 //        enableButtons();
 //    }
 
+    private void findViews(View view){
+        mButtonRow00 = view.findViewById(R.id.row_btn_0_0);
+        mButtonRow01 = view.findViewById(R.id.row_btn_0_1);
+        mButtonRow02 = view.findViewById(R.id.row_btn_0_2);
+        mButtonRow03 = view.findViewById(R.id.row_btn_0_3);
+        mButtonRow04 = view.findViewById(R.id.row_btn_0_4);
+        mButtonRow10 = view.findViewById(R.id.row_btn_1_0);
+        mButtonRow11 = view.findViewById(R.id.row_btn_1_1);
+        mButtonRow12 = view.findViewById(R.id.row_btn_1_2);
+        mButtonRow13 = view.findViewById(R.id.row_btn_1_3);
+        mButtonRow14 = view.findViewById(R.id.row_btn_1_4);
+        mButtonRow20 = view.findViewById(R.id.row_btn_2_0);
+        mButtonRow21 = view.findViewById(R.id.row_btn_2_1);
+        mButtonRow22 = view.findViewById(R.id.row_btn_2_2);
+        mButtonRow23 = view.findViewById(R.id.row_btn_2_3);
+        mButtonRow24 = view.findViewById(R.id.row_btn_2_4);
+        mButtonRow30 = view.findViewById(R.id.row_btn_3_0);
+        mButtonRow31 = view.findViewById(R.id.row_btn_3_1);
+        mButtonRow32 = view.findViewById(R.id.row_btn_3_2);
+        mButtonRow33 = view.findViewById(R.id.row_btn_3_3);
+        mButtonRow34 = view.findViewById(R.id.row_btn_3_4);
+        mButtonRow40 = view.findViewById(R.id.row_btn_4_0);
+        mButtonRow41 = view.findViewById(R.id.row_btn_4_1);
+        mButtonRow42 = view.findViewById(R.id.row_btn_4_2);
+        mButtonRow43 = view.findViewById(R.id.row_btn_4_3);
+        mButtonRow44 = view.findViewById(R.id.row_btn_4_4);
+
+    }
+
     public FourInARowFragment() {
         // Required empty public constructor
     }
@@ -54,7 +83,7 @@ public class FourInARowFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_four_in_a_row, container, false);
-        //findViews(view);
+        findViews(view);
         setListeners(view);
 
         return view;
