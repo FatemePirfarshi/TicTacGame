@@ -41,17 +41,10 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-                if (fragment == null)
-                    fragmentManager
-                            .beginTransaction()
-                            .add(R.id.fragment_container, mFragmentTicTac)
-                            .commit();
-                else
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.fragment_container, mFragmentTicTac)
-                            .commit();
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, mFragmentTicTac)
+                        .commit();
             }
         });
 
@@ -61,17 +54,10 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Fragment fragment = fragmentManager.findFragmentById(R.id.fragment_container);
-                if (fragment == null)
-                    fragmentManager
-                            .beginTransaction()
-                            .add(R.id.fragment_container, mFourInARowFragment)
-                            .commit();
-                else
-                    fragmentManager
-                            .beginTransaction()
-                            .replace(R.id.fragment_container, mFourInARowFragment)
-                            .commit();
+                fragmentManager
+                        .beginTransaction()
+                        .replace(R.id.fragment_container, mFourInARowFragment)
+                        .commit();
             }
         });
     }

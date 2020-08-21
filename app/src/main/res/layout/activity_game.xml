@@ -16,6 +16,7 @@
 
         <Button
             android:id="@+id/btn_tic_tac_toe"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -23,6 +24,7 @@
 
         <Button
             android:id="@+id/btn_Row"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
