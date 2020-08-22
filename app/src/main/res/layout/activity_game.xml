@@ -20,13 +20,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/button_tic_tac_toe" />
+            android:text="@string/button_tic_tac_toe"
+            android:layout_margin="20dp"/>
 
         <Button
             android:id="@+id/btn_Row"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:layout_weight="1"
             android:text="@string/button_4_in_a_row" />
     </LinearLayout>

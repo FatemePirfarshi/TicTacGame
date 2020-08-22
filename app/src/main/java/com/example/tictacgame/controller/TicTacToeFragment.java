@@ -23,6 +23,8 @@ public class TicTacToeFragment extends Fragment {
    // public static final String BUTTON_STRING = "button String";
     public static final String KEY_PLAYED_BUTTON = "played button";
 
+    private int mTurn  = 0;
+    
     private Button mButtonTic00, mButtonTic01, mButtonTic02,
             mButtonTic10, mButtonTic11, mButtonTic12,
             mButtonTic20, mButtonTic21, mButtonTic22;
