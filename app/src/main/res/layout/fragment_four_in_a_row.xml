@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".controller.FourInARowFragment"
+    android:background="#CBDBFD"
+    android:gravity="center"
     android:orientation="vertical"
-    android:gravity="center">
+    tools:context=".controller.FourInARowFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
@@ -141,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/secondary_text_dark"/>
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
             <Button
                 android:id="@+id/row_btn_2_3"
@@ -156,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/secondary_text_dark"/>
+                android:backgroundTint="@android:color/secondary_text_dark" />
         </LinearLayout>
 
         <LinearLayout
@@ -201,7 +202,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="@android:color/secondary_text_dark"/>
+                android:backgroundTint="@android:color/secondary_text_dark" />
 
         </LinearLayout>
 
