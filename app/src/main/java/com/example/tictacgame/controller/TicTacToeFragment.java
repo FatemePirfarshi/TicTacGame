@@ -3,40 +3,41 @@ package com.example.tictacgame.controller;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.FrameLayout;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import com.example.tictacgame.R;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.Serializable;
 
 public class TicTacToeFragment extends Fragment {
 
-   // public static final String BUTTON_STRING = "button String";
-    public static final String KEY_PLAYED_BUTTON = "played button";
+    public static final String KEY_PLAY_TURN = "play turn";
+    public static final String KEY_PLAY_RESULT_ARRAY = "play result array";
+    public static final String SHOW_WINNER = "show winner";
+    public static final String GAME_FINISHED = "game finished";
+    public static final String NO_ONE_IS_WINNER = "no one is winner";
 
-    private int mTurn  = 0;
+    private int mTurn = 0;
 
-    private Button mButtonTic00, mButtonTic01, mButtonTic02,
-            mButtonTic10, mButtonTic11, mButtonTic12,
-            mButtonTic20, mButtonTic21, mButtonTic22;
+    private LinearLayout mLinearLayoutRoot;
 
-    private FrameLayout mFrameLayoutRoot;
+    private int[][] ticButtonsId = {{R.id.tic_btn_0_0, R.id.tic_btn_0_1, R.id.tic_btn_0_2},
+            {R.id.tic_btn_1_0, R.id.tic_btn_1_1, R.id.tic_btn_1_2},
+            {R.id.tic_btn_2_0, R.id.tic_btn_2_1, R.id.tic_btn_2_2}};
 
-    private int[] ticButtonsId = {R.id.tic_btn_0_0, R.id.tic_btn_0_1, R.id.tic_btn_0_2,
-            R.id.tic_btn_1_0, R.id.tic_btn_1_1, R.id.tic_btn_1_2,
-            R.id.tic_btn_2_0, R.id.tic_btn_2_1, R.id.tic_btn_2_2};
+    private boolean[][] isPlayed = new boolean[3][3];
+    private boolean[] playResult = new boolean[9];
+    private boolean noOne = false;
+    private Button[][] mButtons = new Button[3][3];
 
-    private boolean[] isPlayed = new boolean[9];
-    private Button[] mButtons = new Button[9];
+
+    private String mWinner = "";
 
     public TicTacToeFragment() {
         // Required empty public constructor
@@ -56,162 +57,205 @@ public class TicTacToeFragment extends Fragment {
         findViwes(view);
         setListeners(view);
 
-        if(savedInstanceState != null){
-//            String buttonText = savedInstanceState.getString(BUTTON_STRING);
-//            mButtonTic00.setText(buttonText);
-//            isPlayed = savedInstanceState.getBooleanArray(KEY_PLAYED_BUTTON);
-//            flag = true;
-//            for (int i = 0; i < 9; i++) {
-//                if(isPlayed[i]){
-//                    if(flag) {
-//                        mButtons[i].setText("O");
-//                        flag = false;
-//                    }else{
-//                        mButtons[i].setText("X");
-//                        flag = true;
-//                    }
-//                }
-//
-//            }
+        if (savedInstanceState != null) {
+            mTurn = savedInstanceState.getInt(KEY_PLAY_TURN);
+
+            playResult = savedInstanceState.getBooleanArray(KEY_PLAY_RESULT_ARRAY);
+
+            boolean flag = true;
+            int counter = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (playResult[counter++]) {
+                        if (flag) {
+                            mButtons[i][j].setText("O");
+                            flag = false;
+                        } else {
+                            mButtons[i][j].setText("X");
+                            flag = true;
+                        }
+                        mButtons[i][j].setEnabled(false);
+                    }
+                }
+            }
+
+            if(savedInstanceState.getBoolean(GAME_FINISHED)){
+                mWinner = savedInstanceState.getString(SHOW_WINNER);
+                showSnackBar(true);
+            }
+
+            if(savedInstanceState.getBoolean(NO_ONE_IS_WINNER)){
+                final Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.fragment_container),
+                        "no one", BaseTransientBottomBar.LENGTH_INDEFINITE);
+                snackbar.setDuration(5000000);
+                snackbar.setAction("Dismiss", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        snackbar.dismiss();
+                        snackbar.show();
+                    }
+                });
+            }
         }
 
         return view;
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        outState.putInt(KEY_PLAY_TURN, mTurn);
+
+        int counter = 0;
+
+        for (int i = 0; i < mButtons.length; i++) {
+            for (int j = 0; j < mButtons.length; j++) {
+
+                if (isPlayed[i][j]) {
+                    playResult[counter] = isPlayed[i][j];
+                }
+                counter++;
+            }
+        }
+
+        outState.putBooleanArray(KEY_PLAY_RESULT_ARRAY, playResult);
+
+        if(isGameFinished()) {
+            outState.putString(SHOW_WINNER, mWinner);
+            outState.putBoolean(GAME_FINISHED, true);
+        }else
+            outState.putBoolean(GAME_FINISHED , false);
+
+        outState.putBoolean(NO_ONE_IS_WINNER, noOne);
+    }
+
     private void findViwes(View view) {
-        mFrameLayoutRoot = view.findViewById(R.id.tic_root_layout);
+        mLinearLayoutRoot = view.findViewById(R.id.tic_root_layout);
     }
 
 
     private void setListeners(View view) {
-        for (int id : ticButtonsId) {
-            view.findViewById(id).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    clickButton(view);
-                }
-            });
+
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                final int finalI = i;
+                final int finalJ = j;
+                mButtons[i][j] = view.findViewById(ticButtonsId[i][j]);
+                mButtons[i][j].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        isPlayed[finalI][finalJ] = true;
+                        setTurn(finalI, finalJ);
+                        mButtons[finalI][finalJ].setEnabled(false);
+                        showSnackBar(isGameFinished());
+                    }
+                });
+            }
         }
     }
 
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-     //   outState.putBooleanArray(KEY_PLAYED_BUTTON, isPlayed);
-      //  outState.putString(BUTTON_STRING, (String) mButtonTic00.getText());
+    private void setTurn(int i, int j) {
+        mButtons[i][j].setText(mTurn % 2 == 0 ? "O" : "X");
+        mTurn++;
     }
 
-    private void clickButton(View view) {
+    private void showSnackBar(boolean isFinished) {
+        String winner;
+        if (mWinner.equals("O"))
+            winner = "O";
+        else
+            winner = "X";
 
-        if (checkWinner())
-            return;
+        final Snackbar snackbar = Snackbar.make(getActivity().findViewById(R.id.fragment_container),
+                winner + " is Winner", BaseTransientBottomBar.LENGTH_INDEFINITE);
+        snackbar.setDuration(5000000);
+        snackbar.setAction("Dismiss", new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
 
-        switch (view.getId()) {
-
-            case R.id.tic_btn_0_0:
-                mButtonTic00 = view.findViewById(R.id.tic_btn_0_0);
-                setButtonsText(mButtonTic00);
-                isPlayed[0] = true;
-                mButtons[0] = mButtonTic00;
-                break;
-            case R.id.tic_btn_0_1:
-                mButtonTic01 = view.findViewById(R.id.tic_btn_0_1);
-                setButtonsText(mButtonTic01);
-                isPlayed[1] = true;
-                mButtons[1] = mButtonTic01;
-                break;
-            case R.id.tic_btn_0_2:
-                mButtonTic02 = view.findViewById(R.id.tic_btn_0_2);
-                setButtonsText(mButtonTic02);
-                isPlayed[2] = true;
-                mButtons[2] = mButtonTic02;
-                break;
-            case R.id.tic_btn_1_0:
-                mButtonTic10 = view.findViewById(R.id.tic_btn_1_0);
-                setButtonsText(mButtonTic10);
-                isPlayed[3] = true;
-                mButtons[3] = mButtonTic10;
-                break;
-            case R.id.tic_btn_1_1:
-                mButtonTic11 = view.findViewById(R.id.tic_btn_1_1);
-                setButtonsText(mButtonTic11);
-                isPlayed[4] = true;
-                mButtons[4] = mButtonTic11;
-                break;
-            case R.id.tic_btn_1_2:
-                mButtonTic12 = view.findViewById(R.id.tic_btn_1_2);
-                setButtonsText(mButtonTic12);
-                isPlayed[5] = true;
-                mButtons[5] = mButtonTic12;
-                break;
-            case R.id.tic_btn_2_0:
-                mButtonTic20 = view.findViewById(R.id.tic_btn_2_0);
-                setButtonsText(mButtonTic20);
-                isPlayed[6] = true;
-                mButtons[6] = mButtonTic20;
-                break;
-            case R.id.tic_btn_2_1:
-                mButtonTic21 = view.findViewById(R.id.tic_btn_2_1);
-                setButtonsText(mButtonTic21);
-                isPlayed[7] = true;
-                mButtons[7] = mButtonTic21;
-                break;
-            case R.id.tic_btn_2_2:
-                mButtonTic22 = view.findViewById(R.id.tic_btn_2_2);
-                setButtonsText(mButtonTic22);
-                isPlayed[8] = true;
-                mButtons[8] = mButtonTic22;
-                break;
-        }
-        checkWinner();
-    }
-
-    boolean flag = true;
-
-    private void setButtonsText(Button button) {
-        if (flag) {
-            button.setText("O");
-            button.setEnabled(false);
-            flag = false;
+        if (isFinished) {
+            snackbar.show();
+            setEnableButtons();
         } else {
-            button.setText("X");
-            button.setEnabled(false);
-            flag = true;
+            if (isAllButtonsClicked()) {
+                winner = "No one";
+                snackbar.setText(winner);
+                snackbar.show();
+                setEnableButtons();
+                noOne = true;
+            }
+        }
+
+    }
+
+    private void setEnableButtons() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if(mButtons[i][j].isEnabled())
+                    mButtons[i][j].setEnabled(false);
+            }
         }
     }
 
-    private boolean checkWinner() {
+    private boolean isGameFinished() {
 
-        boolean line1 = winState(mButtonTic00, mButtonTic01, mButtonTic02);
-        boolean line2 = winState(mButtonTic10, mButtonTic11, mButtonTic12);
-        boolean line3 = winState(mButtonTic20, mButtonTic21, mButtonTic22);
-        boolean column1 = winState(mButtonTic00, mButtonTic10, mButtonTic20);
-        boolean column2 = winState(mButtonTic01, mButtonTic11, mButtonTic21);
-        boolean column3 = winState(mButtonTic02, mButtonTic12, mButtonTic22);
-        boolean diagonal1 = winState(mButtonTic20, mButtonTic11, mButtonTic02);
-        boolean diagonal2 = winState(mButtonTic00, mButtonTic11, mButtonTic22);
+        for (int i = 0; i < 3; i++) {
 
-        return (line1 || line2 || line3 ||
-                column1 || column2 || column3 ||
-                diagonal1 || diagonal2);
-    }
+            if (mButtons[i][0].getText().equals(mButtons[i][1].getText()) &&
+                    mButtons[i][0].getText().equals(mButtons[i][2].getText()) &&
+                    mButtons[i][0].getText() != "") {
 
-    private boolean winState(Button first, Button second, Button last) {
-
-        if (first != null && second != null && last != null)
-
-            if (first.getText().equals(second.getText())
-                    && first.getText().equals(last.getText())) {
-
-                if (first.getText().toString().equals("O"))
-
-                    Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "O is Winner", Snackbar.LENGTH_SHORT).show();
-                else
-                    Snackbar.make(getActivity().findViewById(android.R.id.content),
-                            "X is Winner", Snackbar.LENGTH_SHORT).show();
+                mWinner = mButtons[i][0].getText().toString();
                 return true;
             }
+        }
+
+        for (int i = 0; i < 3; i++) {
+
+            if (mButtons[0][i].getText().equals(mButtons[1][i].getText()) &&
+                    mButtons[0][i].getText().equals(mButtons[2][i].getText()) &&
+                    mButtons[0][i].getText() != "") {
+
+                mWinner = mButtons[i][0].getText().toString();
+                return true;
+            }
+        }
+
+        if (mButtons[0][0].getText().equals(mButtons[1][1].getText()) &&
+                mButtons[1][1].getText().equals(mButtons[2][2].getText()) &&
+                mButtons[0][0].getText() != "") {
+
+            mWinner = mButtons[0][0].getText().toString();
+            return true;
+        }
+
+        if (mButtons[0][2].getText().equals(mButtons[1][1].getText()) &&
+                mButtons[1][1].getText().equals(mButtons[2][0].getText()) &&
+                mButtons[0][2].getText() != "") {
+
+            mWinner = mButtons[0][2].getText().toString();
+            return true;
+        }
+
         return false;
     }
+
+
+    public boolean isAllButtonsClicked() {
+
+        int count = 0;
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (!mButtons[i][j].isEnabled())
+                    count++;
+            }
+        }
+
+        return count == 9;
+    }
+
 }

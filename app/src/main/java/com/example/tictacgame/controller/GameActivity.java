@@ -1,26 +1,21 @@
 package com.example.tictacgame.controller;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import com.example.tictacgame.R;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
 
 public class GameActivity extends AppCompatActivity {
 
     public static final String CURRENTLY_FRAGMENT = "currently fragment";
     private Button mButtonTicTac;
     private Button mButtonRow;
-    private FrameLayout mFrameLayoutContainer;
+    private LinearLayout mLinearLayoutContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +29,7 @@ public class GameActivity extends AppCompatActivity {
     private void findViews() {
         mButtonTicTac = findViewById(R.id.btn_tic_tac_toe);
         mButtonRow = findViewById(R.id.btn_Row);
-        mFrameLayoutContainer = findViewById(R.id.fragment_container);
+        mLinearLayoutContainer = findViewById(R.id.fragment_container);
     }
 
     private void setListeners() {
