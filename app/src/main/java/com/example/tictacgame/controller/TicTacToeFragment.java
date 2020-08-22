@@ -2,6 +2,8 @@ package com.example.tictacgame.controller;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -14,7 +16,12 @@ import android.widget.Toast;
 import com.example.tictacgame.R;
 import com.google.android.material.snackbar.Snackbar;
 
+import java.io.Serializable;
+
 public class TicTacToeFragment extends Fragment {
+
+   // public static final String BUTTON_STRING = "button String";
+    public static final String KEY_PLAYED_BUTTON = "played button";
 
     private Button mButtonTic00, mButtonTic01, mButtonTic02,
             mButtonTic10, mButtonTic11, mButtonTic12,
@@ -26,6 +33,9 @@ public class TicTacToeFragment extends Fragment {
             R.id.tic_btn_1_0, R.id.tic_btn_1_1, R.id.tic_btn_1_2,
             R.id.tic_btn_2_0, R.id.tic_btn_2_1, R.id.tic_btn_2_2};
 
+    private boolean[] isPlayed = new boolean[9];
+    private Button[] mButtons = new Button[9];
+
     public TicTacToeFragment() {
         // Required empty public constructor
     }
@@ -33,7 +43,6 @@ public class TicTacToeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -43,8 +52,26 @@ public class TicTacToeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_tic_tac_toe, container, false);
 
         findViwes(view);
-
         setListeners(view);
+
+        if(savedInstanceState != null){
+//            String buttonText = savedInstanceState.getString(BUTTON_STRING);
+//            mButtonTic00.setText(buttonText);
+//            isPlayed = savedInstanceState.getBooleanArray(KEY_PLAYED_BUTTON);
+//            flag = true;
+//            for (int i = 0; i < 9; i++) {
+//                if(isPlayed[i]){
+//                    if(flag) {
+//                        mButtons[i].setText("O");
+//                        flag = false;
+//                    }else{
+//                        mButtons[i].setText("X");
+//                        flag = true;
+//                    }
+//                }
+//
+//            }
+        }
 
         return view;
     }
@@ -52,6 +79,7 @@ public class TicTacToeFragment extends Fragment {
     private void findViwes(View view) {
         mFrameLayoutRoot = view.findViewById(R.id.tic_root_layout);
     }
+
 
     private void setListeners(View view) {
         for (int id : ticButtonsId) {
@@ -64,6 +92,13 @@ public class TicTacToeFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+     //   outState.putBooleanArray(KEY_PLAYED_BUTTON, isPlayed);
+      //  outState.putString(BUTTON_STRING, (String) mButtonTic00.getText());
+    }
+
     private void clickButton(View view) {
 
         if (checkWinner())
@@ -74,38 +109,56 @@ public class TicTacToeFragment extends Fragment {
             case R.id.tic_btn_0_0:
                 mButtonTic00 = view.findViewById(R.id.tic_btn_0_0);
                 setButtonsText(mButtonTic00);
+                isPlayed[0] = true;
+                mButtons[0] = mButtonTic00;
                 break;
             case R.id.tic_btn_0_1:
                 mButtonTic01 = view.findViewById(R.id.tic_btn_0_1);
                 setButtonsText(mButtonTic01);
+                isPlayed[1] = true;
+                mButtons[1] = mButtonTic01;
                 break;
             case R.id.tic_btn_0_2:
                 mButtonTic02 = view.findViewById(R.id.tic_btn_0_2);
                 setButtonsText(mButtonTic02);
+                isPlayed[2] = true;
+                mButtons[2] = mButtonTic02;
                 break;
             case R.id.tic_btn_1_0:
                 mButtonTic10 = view.findViewById(R.id.tic_btn_1_0);
                 setButtonsText(mButtonTic10);
+                isPlayed[3] = true;
+                mButtons[3] = mButtonTic10;
                 break;
             case R.id.tic_btn_1_1:
                 mButtonTic11 = view.findViewById(R.id.tic_btn_1_1);
                 setButtonsText(mButtonTic11);
+                isPlayed[4] = true;
+                mButtons[4] = mButtonTic11;
                 break;
             case R.id.tic_btn_1_2:
                 mButtonTic12 = view.findViewById(R.id.tic_btn_1_2);
                 setButtonsText(mButtonTic12);
+                isPlayed[5] = true;
+                mButtons[5] = mButtonTic12;
                 break;
             case R.id.tic_btn_2_0:
                 mButtonTic20 = view.findViewById(R.id.tic_btn_2_0);
                 setButtonsText(mButtonTic20);
+                isPlayed[6] = true;
+                mButtons[6] = mButtonTic20;
                 break;
             case R.id.tic_btn_2_1:
                 mButtonTic21 = view.findViewById(R.id.tic_btn_2_1);
                 setButtonsText(mButtonTic21);
+                isPlayed[7] = true;
+                mButtons[7] = mButtonTic21;
                 break;
             case R.id.tic_btn_2_2:
                 mButtonTic22 = view.findViewById(R.id.tic_btn_2_2);
                 setButtonsText(mButtonTic22);
+                isPlayed[8] = true;
+                mButtons[8] = mButtonTic22;
                 break;
         }
         checkWinner();
