@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CBDBFD"
+    android:background="#A5A1A1"
     android:orientation="horizontal"
     tools:context=".controller.GameActivity">
 
@@ -24,24 +25,26 @@
         android:gravity="right|center"
         android:orientation="vertical">
 
-        <Button
+        <ImageView
             android:id="@+id/btn_tic_tac_toe"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:text="@string/button_tic_tac_toe"
-            android:textSize="18sp" />
+            android:layout_width="115dp"
+            android:layout_height="81dp"
+            android:layout_marginRight="80dp"
+            app:srcCompat="@drawable/ic_tic_tac_toe" />
 
-        <Button
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="120dp"
+            android:layout_height="86dp"
+            app:srcCompat="@drawable/ic_gamepad" />
+
+        <ImageView
             android:id="@+id/btn_Row"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="125dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_width="196dp"
+            android:layout_height="111dp"
+            android:layout_marginRight="40dp"
+            app:srcCompat="@drawable/ic_four_in_a_row" />
 
-            android:text="@string/button_4_in_a_row"
-            android:textSize="18sp" />
     </LinearLayout>
 
 

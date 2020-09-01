@@ -6,6 +6,7 @@ import androidx.fragment.app.FragmentManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.tictacgame.R;
@@ -13,8 +14,8 @@ import com.example.tictacgame.R;
 public class GameActivity extends AppCompatActivity {
 
     public static final String CURRENTLY_FRAGMENT = "currently fragment";
-    private Button mButtonTicTac;
-    private Button mButtonRow;
+    private ImageView mButtonTicTac;
+    private ImageView mButtonRow;
     private LinearLayout mLinearLayoutContainer;
 
     @Override

@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CBDBFD"
+    android:background="#A5A1A1"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".controller.FourInARowFragment">
@@ -11,7 +11,7 @@
     <!-- TODO: Update blank fragment layout -->
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="90dp"
+        android:layout_height="50dp"
         android:gravity="center"
         android:text="@string/game_name_row"
         android:textColor="@android:color/black"

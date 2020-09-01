@@ -1,4 +1,4 @@
-package com.example.tictacgame.controller.models;
+package com.example.tictacgame.models;
 
 import android.graphics.Color;
 import android.view.View;

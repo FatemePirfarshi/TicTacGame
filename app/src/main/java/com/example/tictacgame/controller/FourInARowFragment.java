@@ -14,14 +14,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.example.tictacgame.R;
-import com.example.tictacgame.controller.models.GameButtons;
+import com.example.tictacgame.models.GameButtons;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 
 public class FourInARowFragment extends Fragment {
@@ -30,6 +25,7 @@ public class FourInARowFragment extends Fragment {
     public static final String KEY_BUTTONS_ARRAY = "key buttons array";
     public static final String KEY_GAME_FINISHED = "Game finished";
     public static final String KEY_SHOW_WINNER = "show winner";
+    public static final String COLOR_ARRAY_FOR_MOVE = "color array for move";
 
     private int mTurn = 0;
     private int[][] rowButtonsId =
@@ -40,6 +36,7 @@ public class FourInARowFragment extends Fragment {
                     {R.id.row_btn_4_0, R.id.row_btn_4_1, R.id.row_btn_4_2, R.id.row_btn_4_3, R.id.row_btn_4_4}};
 
     boolean[] played = new boolean[25];
+    int[] moveColor = new int[25];
     private GameButtons[][] mButtons = new GameButtons[5][5];
 
     private int mWinner;
@@ -66,27 +63,23 @@ public class FourInARowFragment extends Fragment {
         if (savedInstanceState != null) {
 
             mTurn = savedInstanceState.getInt(KEY_TURN_GAME);
-
             played = savedInstanceState.getBooleanArray(KEY_BUTTONS_ARRAY);
-            boolean flag = true;
+            moveColor = savedInstanceState.getIntArray(COLOR_ARRAY_FOR_MOVE);
+
             int counter = 0;
             for (int i = 0; i < mButtons.length; i++) {
                 for (int j = 0; j < mButtons.length; j++) {
-                    if (played[counter++]) {
-                        if (flag) {
-                            mButtons[i][j].setColor(Color.BLUE);
-                            flag = false;
-                        } else {
-                            mButtons[i][j].setColor(Color.RED);
-                            flag = true;
-                        }
+
+                    if (played[counter]) {
+                        mButtons[i][j].setColor(moveColor[counter]);
                         if (i < 4)
                             mButtons[i + 1][j].getButton().setEnabled(true);
                     }
+                    counter++;
                 }
             }
 
-            if(savedInstanceState.getBoolean(KEY_GAME_FINISHED)){
+            if (savedInstanceState.getBoolean(KEY_GAME_FINISHED)) {
                 mWinner = savedInstanceState.getInt(KEY_SHOW_WINNER);
                 showSnackBar(true);
             }
@@ -102,22 +95,24 @@ public class FourInARowFragment extends Fragment {
         outState.putInt(KEY_TURN_GAME, mTurn);
 
         int counter = 0;
-
         for (int i = 0; i < mButtons.length; i++) {
             for (int j = 0; j < mButtons.length; j++) {
 
                 if (mButtons[i][j].isPlayed()) {
-                    played[counter++] = mButtons[i][j].isPlayed();
+                    played[counter] = mButtons[i][j].isPlayed();
+                    moveColor[counter] = mButtons[i][j].getColor();
                 }
+                counter++;
             }
         }
         outState.putBooleanArray(KEY_BUTTONS_ARRAY, played);
+        outState.putIntArray(COLOR_ARRAY_FOR_MOVE, moveColor);
 
-        if(isGameFinished()) {
+        if (isGameFinished()) {
             outState.putInt(KEY_SHOW_WINNER, mWinner);
             outState.putBoolean(KEY_GAME_FINISHED, true);
-        }else
-            outState.putBoolean(KEY_GAME_FINISHED , false);
+        } else
+            outState.putBoolean(KEY_GAME_FINISHED, false);
 
     }
 

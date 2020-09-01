@@ -5,35 +5,39 @@
     android:id="@+id/activity_root_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CBDBFD"
+    android:background="#A5A1A1"
     android:orientation="vertical"
     tools:context=".controller.GameActivity">
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="174dp"
         android:orientation="horizontal">
 
-        <Button
+        <ImageView
             android:id="@+id/btn_tic_tac_toe"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_width="115dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="80dp"
             android:layout_weight="1"
-            android:text="@string/button_tic_tac_toe"
-            android:textSize="18sp" />
+            app:srcCompat="@drawable/ic_tic_tac_toe" />
 
-        <Button
-            android:id="@+id/btn_Row"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="112dp"
+            android:layout_height="98dp"
             android:layout_weight="1"
-            android:text="@string/button_4_in_a_row"
-            android:textSize="18sp" />
+            app:srcCompat="@drawable/ic_gamepad" />
+
+        <ImageView
+            android:id="@+id/btn_Row"
+            android:layout_width="121dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="50dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/ic_four_in_a_row" />
+
     </LinearLayout>
 
     <LinearLayout
@@ -43,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_weight="1"
+        android:background="#FFFFFF"
         android:orientation="vertical">
 
     </LinearLayout>
